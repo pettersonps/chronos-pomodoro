@@ -9,6 +9,7 @@ import { PlayCircleIcon } from 'lucide-react';
 
 import './styles/theme.css';
 import './styles/global.css';
+import { Footer } from './components/Footer';
 
 export function App() {
   return (
@@ -39,9 +40,12 @@ export function App() {
             <Cycles />
           </div>
           <div className='formRow'>
-            <DefaultButton icon={<PlayCircleIcon />} color='green' />
+            <DefaultButton icon={<PlayCircleIcon />} />
           </div>
         </form>
+      </Container>
+      <Container>
+        <Footer />
       </Container>
     </>
   );
