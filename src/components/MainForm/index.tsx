@@ -11,7 +11,7 @@ export function MainForm() {
           <DefaultInput
             id='input'
             type='text'
-            labelText='task:'
+            labelText='Tarefa'
             placeholder='digite algo'
           />
         </div>
