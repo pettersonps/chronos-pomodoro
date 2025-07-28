@@ -7,8 +7,8 @@ import { useTaskContext } from '../../contexts/TaskContext/useTaskContext';
 import { getNextCycle } from '../../utils/getNextCycle';
 import { getNextCycleType } from '../../utils/getNextCycleType';
 import { TaskActionTypes } from '../../contexts/TaskContext/taskActions';
-import type { TaskModel } from '../../models/TaskModel';
 import { Tips } from '../Tips';
+import type { TaskModel } from '../../models/TaskModel';
 
 export function MainForm() {
   const { state, dispatch } = useTaskContext();
