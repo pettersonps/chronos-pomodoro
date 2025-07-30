@@ -15,7 +15,6 @@ import styles from './styles.module.css';
 
 export function History() {
   const { state, dispatch } = useTaskContext();
-  const [confirmClearHistory, setConfirmClearHistory] = useState(false);
   const hasTasks = state.tasks.length > 0;
 
   const [sortTaskOptions, setSortTaskOptions] = useState<SortTasksOptions>(
@@ -39,18 +38,12 @@ export function History() {
     }));
   }, [state.tasks]);
 
-  useEffect(() => {
-    if (!confirmClearHistory) return;
-    dispatch({ type: TaskActionTypes.RESET_STATE });
-    setConfirmClearHistory(false);
-  }, [confirmClearHistory, dispatch]);
-
   // fix big when try to delete history from another page than History
   useEffect(() => {
     return () => {
       showMessage.dismiss();
     };
-  });
+  }, []);
 
   function handleSortTasks({ field }: Pick<SortTasksOptions, 'field'>) {
     const newDirection = sortTaskOptions.direction === 'desc' ? 'asc' : 'desc';
@@ -69,7 +62,9 @@ export function History() {
   function handleResetHistory() {
     showMessage.dismiss();
     showMessage.confirm('Tem certeza?', confirmation => {
-      setConfirmClearHistory(confirmation);
+      if (confirmation) {
+        dispatch({ type: TaskActionTypes.RESET_STATE });
+      }
     });
   }
 
